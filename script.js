@@ -92,3 +92,26 @@ prevBtn.addEventListener("click", () => {
             console.log("Songs loaded:", songs);
         })
         .catch(err => console.error(err));
+
+    const currentTimeEl = document.getElementById("currentTime");
+    const durationEl = document.getElementById("duration");
+    
+    song.addEventListener("loadedmetadata", () => {
+        durationEl.innerText = formatTime(song.duration);
+    });
+
+    song.addEventListener("timeupdate", () => {
+        currentTimeEl.innerText = formatTime(song.currentTime);
+    });
+
+    function formatTime(time){
+        let min = Math.floor(time / 60);
+        let sec = Math.floor(time % 60);
+        return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+    }
+    
+    const volume = document.getElementById("volume");
+
+    volume.addEventListener("input", () => {
+        song.volume = volume.value;
+    });

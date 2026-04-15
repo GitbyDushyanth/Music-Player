@@ -13,11 +13,14 @@
     justify-content: center;
     flex-wrap: wrap;
 }
-.music-play{
-    background: #64c2f4;
-    width: 400px;
+.music-play {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    width: 380px;
     padding: 25px 35px;
     text-align: center;
+    border-radius: 20px;
+    color: #fff;
 }
 nav{
     display: flex;
@@ -35,9 +38,9 @@ nav .circle{
 }
 .song{
     width: 220px;
-    border-radius: 50%;
+    border-radius: 20px;
     border: 1px solid #fff;
-    box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 .music-play h1{
     font-size: 25px;
@@ -72,21 +75,29 @@ nav .circle{
     justify-content: center;
     align-items: center;
 }
-.controls div{
-    width: 60px;
-    height: 60px;
-    margin: 20px;
-    padding: 21px;
-    background: #fff;
-    display: inline-flex;
-    justify-content: center;
+.controls div {
+    width: 55px;
+    height: 55px;
+    margin: 15px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
     border-radius: 50%;
-    color: #0077b7;
-    box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    transition: 0.3s;
 }
+
 .controls div:hover {
-    background: #0077b7;
+    transform: scale(1.2);
+    background: #fff;
+    color: #000;
+}
+
+.time{
+    display: flex;
+    justify-content: space-between;
     color: #fff;
-    transform: scale(1.1);
+    font-size: 14px;
 }
