@@ -1,0 +1,94 @@
+let progress = document.getElementById("progress");
+    let song = document.getElementById("song");
+    let ctrlIcon = document.getElementById("ctrlIcon");
+    let songs = [];
+    let currentSong = 0;
+    let updateProgress;
+
+    function loadSong(index) {
+        const songData = songs[index];
+
+        song.src = songData.src;
+        song.load();
+
+        document.querySelector("h1").innerText = songData.title;
+        document.querySelector("p").innerText = `- ${songData.artist}`;
+        document.querySelector(".song").src = songData.cover;
+        progress.value = 0;
+
+        song.onloadedmetadata = function () {
+            progress.max = song.duration;
+            progress.value = song.currentTime;
+        };
+    }
+
+    function playPause() {
+        if (ctrlIcon.classList.contains("fa-pause")) {
+            song.pause();
+            ctrlIcon.classList.remove("fa-pause");
+            ctrlIcon.classList.add("fa-play");
+        } else {
+            song.play();
+            ctrlIcon.classList.remove("fa-play");
+            ctrlIcon.classList.add("fa-pause");
+        }
+    }
+
+    song.addEventListener("play", () => {
+        updateProgress = setInterval(() => {
+            progress.value = song.currentTime;
+        }, 500);
+    });
+
+    song.addEventListener("pause", () => {
+        clearInterval(updateProgress);
+    });
+
+    progress.addEventListener("input", () => {
+        song.currentTime = progress.value;
+        ctrlIcon.classList.remove("fa-play");
+        ctrlIcon.classList.add("fa-pause");
+    });
+
+const nextBtn = document.querySelector(".next-btn");
+const prevBtn = document.querySelector(".prev-btn");
+
+nextBtn.addEventListener("click", () => {
+    if (songs.length === 0) return;
+
+    currentSong = (currentSong + 1) % songs.length;
+    loadSong(currentSong);
+    song.play();
+
+    ctrlIcon.classList.remove("fa-play");
+    ctrlIcon.classList.add("fa-pause");
+});
+
+prevBtn.addEventListener("click", () => {
+    if (songs.length === 0) return;
+
+    currentSong = (currentSong - 1 + songs.length) % songs.length;
+    loadSong(currentSong);
+    song.play();
+
+    ctrlIcon.classList.remove("fa-play");
+    ctrlIcon.classList.add("fa-pause");
+});
+
+    song.addEventListener("ended", () => {
+        currentSong = (currentSong + 1) % songs.length;
+        loadSong(currentSong);
+        song.play();
+        ctrlIcon.classList.remove("fa-play");
+        ctrlIcon.classList.add("fa-pause");
+    });
+
+    fetch("data/songs.json")
+        .then(response => response.json())
+        .then(data => {
+            songs = data;
+            loadSong(currentSong);
+
+            console.log("Songs loaded:", songs);
+        })
+        .catch(err => console.error(err));
