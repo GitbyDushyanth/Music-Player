@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Devara Thandavam",
+    "artist": "Anirudh Ravichander",
+    "src": "assets/songs/song1.mp3",
+    "cover": "assets/images/song1.png"
+  },
+  {
+    "title": "Vellipomakey",
+    "artist": "Sid Sriram",
+    "src": "assets/songs/song2.mp3",
+    "cover": "assets/images/song2.png"
+  },
+  {
+    "title": "ChalChalo",
+    "artist": "Raghu Dixit",
+    "src": "assets/songs/song3.mp3",
+    "cover": "assets/images/song3.png"
+  }
+]
