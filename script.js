@@ -38,10 +38,16 @@ let progress = document.getElementById("progress");
         updateProgress = setInterval(() => {
             progress.value = song.currentTime;
         }, 500);
+        document.querySelectorAll(".wave span").forEach(bar => {
+        bar.style.animationPlayState = "running";
+    });
     });
 
     song.addEventListener("pause", () => {
         clearInterval(updateProgress);
+        document.querySelectorAll(".wave span").forEach(bar => {
+        bar.style.animationPlayState = "paused";
+    });
     });
 
     progress.addEventListener("input", () => {

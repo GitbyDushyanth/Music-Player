@@ -138,3 +138,29 @@ nav .circle{
     margin-top: 10px;
     accent-color: #fff;
 }
+.wave {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.wave span {
+    width: 4px;
+    height: 20px;
+    background: #fff;
+    animation: wave 1s infinite ease-in-out;
+    animation-play-state: paused; /* 🔥 important */
+}
+
+.wave span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.wave span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes wave {
+    0%, 100% { height: 10px; }
+    50% { height: 25px; }
+}
