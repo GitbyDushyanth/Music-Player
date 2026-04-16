@@ -1,63 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music-Playlist</title>
-    <link rel="stylesheet" href="style.css" />
-    <script
-      src="https://kit.fontawesome.com/d874eaaaf0.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <div class="header">
-      <h2>🎵 My Music</h2>
-    </div>
-    <div class="wave">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="container">
-      <div class="music-play">
-        <nav>
-          <div class="circle">
-            <i class="fa-solid fa-angle-left"></i>
-          </div>
-          <div class="circle">
-            <i class="fa-solid fa-bars"></i>
-          </div>
-        </nav>
-        <img src="thumbnail.png" class="song" />
-        <h1>Vellipomake</h1>
-        <p>-Sid Sriram</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/d874eaaaf0.js" crossorigin="anonymous"></script>
+</head>
+<body>
 
-        <audio id="song"></audio>
-        <input type="range" value="0" id="progress" />
+<div class="container">
+    <div class="app">
 
-        <div class="time">
-          <span id="currentTime">0:00</span>
-          <span id="duration">0:00</span>
+        <!-- PLAYLIST -->
+        <div class="playlist" id="playlist"></div>
+
+        <!-- PLAYER -->
+        <div class="music-play">
+
+            <div class="wave">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <img src="" class="song">
+
+            <h1 id="title">Title</h1>
+            <p id="artist">Artist</p>
+
+            <audio id="song"></audio>
+
+            <input type="range" id="progress" value="0">
+
+            <div class="time">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+
+            <div class="controls">
+                <div class="prev-btn"><i class="fa-solid fa-backward"></i></div>
+                <div class="play-btn" onclick="playPause()">
+                    <i class="fa-solid fa-play" id="ctrlIcon"></i>
+                </div>
+                <div class="next-btn"><i class="fa-solid fa-forward"></i></div>
+            </div>
+
+            <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+
         </div>
-
-        <div class="controls">
-          <div class="prev-btn">
-            <i class="fa-solid fa-backward"></i>
-          </div>
-
-          <div class="play-btn" onclick="playPause()">
-            <i class="fa-solid fa-play" id="ctrlIcon"></i>
-          </div>
-
-          <div class="next-btn">
-            <i class="fa-solid fa-forward"></i>
-          </div>
-        </div>
-      </div>
     </div>
+</div>
 
-    <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
-    <script src="script.js"></script>
-  </body>
+<script src="script.js"></script>
+</body>
 </html>
