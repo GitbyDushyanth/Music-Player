@@ -4,23 +4,36 @@
     font-family: 'poppins', 'sans-serif';
     box-sizing: border-box;
 }
+button, .controls div, .song {
+    transition: all 0.2s ease-in-out;
+}
+.header {
+    color: #fff;
+    margin-bottom: 10px;
+    text-align: left;
+    background: #333;
+}
+
 .container{
     width: 100%;
-    height: 100%;
-    background: #333;
+    height: 100vh;
+    background: linear-gradient(135deg, #1d2b64, #f8cdda);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
 }
 .music-play {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
     width: 380px;
     padding: 25px 35px;
     text-align: center;
     border-radius: 20px;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
 nav{
     display: flex;
@@ -37,38 +50,52 @@ nav .circle{
     box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
 }
 .song{
-    width: 220px;
+    width: 200px;
     border-radius: 20px;
-    border: 1px solid #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.song:hover {
+    transform: scale(1.05);
 }
 .music-play h1{
     font-size: 25px;
     font-weight: 800;
-    color: #333;
+    color: #fff;
     margin-top: 20px;
 }
 .music-play p{
     font-size: 16px;
-    color: #333;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0.8;
 }
-#progress{
+
+#progress {
     -webkit-appearance: none;
     width: 100%;
     height: 6px;
-    background: #0077b7;
-    border-radius: 5px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
     cursor: pointer;
-    margin: 40px 0;
 }
-#progress::-webkit-slider-thumb{
+
+/* filled part */
+#progress::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 10px;
+}
+
+/* thumb */
+#progress::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background: #0077b7;
-    width: 30px;
-    height: 30px;
+    width: 14px;
+    height: 14px;
+    background: #fff;
     border-radius: 50%;
-    border: 8px solid #fff;
-    box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+    cursor: pointer;
+    margin-top: -4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 .controls{
     display: flex;
@@ -96,8 +123,18 @@ nav .circle{
 }
 
 .time{
-    display: flex;
-    justify-content: space-between;
-    color: #fff;
-    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+.play-btn {
+    background: #fff !important;
+    color: #000 !important;
+    transform: scale(1.2);
+}
+#volume {
+    width: 100%;
+    margin-top: 10px;
+    accent-color: #fff;
 }

@@ -102,6 +102,8 @@ prevBtn.addEventListener("click", () => {
 
     song.addEventListener("timeupdate", () => {
         currentTimeEl.innerText = formatTime(song.currentTime);
+        const value = (song.currentTime / song.duration) * 100;
+        progress.style.background = `linear-gradient(to right, #fff ${value}%, rgba(255,255,255,0.3) ${value}%)`;
     });
 
     function formatTime(time){
